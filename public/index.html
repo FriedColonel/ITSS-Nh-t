@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="main_container">
+      <div class="welcome_container">
+        <h1>Welcome to the Chat App</h1>
+        <button id="enter_button">Enter</button>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById('enter_button')
+        .addEventListener('click', function () {
+          window.location.href = 'meet-the-strangers.html';
+        });
+    </script>
+  </body>
+</html>
