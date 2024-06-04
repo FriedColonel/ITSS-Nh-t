@@ -4,21 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome Page</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div class="main_container">
+  <body class="bg-red-400">
+    <!-- <div class="min-h-[100vh] flex justify-center items-center">
       <div class="welcome_container">
         <h1>Welcome to the Chat App</h1>
-        <button id="enter_button">Enter</button>
+        <button
+          id="enter_button"
+          class="py-2 px-5 bg-slate-700 text-white rounded-2xl shadow-inner shadow-cyan-500/50"
+        >
+          Enter
+        </button>
+      </div>
+    </div> -->
+
+    <div
+      class="h-screen flex flex-col justify-center items-center gap-3 text-slate-700"
+    >
+      <div class="bg-white p-6 rounded-2xl">
+        <h1 class="text-4xl font-bold">Welcome to the Chat App</h1>
+
+        <label class="block mt-4">
+          <span class="text-gray-700">Name</span>
+          <input
+            class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
+            placeholder="Jane Doe"
+          />
+        </label>
+
+        <div class="mt-4">
+          <span class="text-gray-700">Đối tượng trò chuyện</span>
+          <div class="mt-2">
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                class="form-radio"
+                name="accountType"
+                value="male"
+              />
+              <span class="ml-2">Nam</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+              <input
+                type="radio"
+                class="form-radio"
+                name="accountType"
+                value="female"
+              />
+              <span class="ml-2">Nữ</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+              <input
+                type="radio"
+                class="form-radio"
+                name="accountType"
+                value="other"
+              />
+              <span class="ml-2">Khác</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="relative inline-flex group mt-4 mx-auto">
+          <div
+            class="absolute transitiona-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"
+          ></div>
+          <a
+            href="/meet-the-strangers.html"
+            title="Get quote now"
+            class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+            role="button"
+            >Enter now
+          </a>
+        </div>
       </div>
     </div>
-    <script>
-      document
-        .getElementById('enter_button')
-        .addEventListener('click', function () {
-          window.location.href = 'meet-the-strangers.html';
-        });
-    </script>
   </body>
 </html>
