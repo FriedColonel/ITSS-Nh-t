@@ -8,78 +8,251 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-red-400">
-    <!-- <div class="min-h-[100vh] flex justify-center items-center">
-      <div class="welcome_container">
-        <h1>Welcome to the Chat App</h1>
-        <button
-          id="enter_button"
-          class="py-2 px-5 bg-slate-700 text-white rounded-2xl shadow-inner shadow-cyan-500/50"
-        >
-          Enter
-        </button>
-      </div>
-    </div> -->
-
     <div
-      class="h-screen flex flex-col justify-center items-center gap-3 text-slate-700"
-    >
-      <div class="bg-white p-6 rounded-2xl">
-        <h1 class="text-4xl font-bold">Welcome to the Chat App</h1>
-
-        <label class="block mt-4">
-          <span class="text-gray-700">Name</span>
-          <input
-            class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
-            placeholder="Jane Doe"
-          />
-        </label>
-
-        <div class="mt-4">
-          <span class="text-gray-700">Đối tượng trò chuyện</span>
-          <div class="mt-2">
-            <label class="inline-flex items-center">
-              <input
-                type="radio"
-                class="form-radio"
-                name="accountType"
-                value="male"
-              />
-              <span class="ml-2">Nam</span>
-            </label>
-            <label class="inline-flex items-center ml-6">
-              <input
-                type="radio"
-                class="form-radio"
-                name="accountType"
-                value="female"
-              />
-              <span class="ml-2">Nữ</span>
-            </label>
-            <label class="inline-flex items-center ml-6">
-              <input
-                type="radio"
-                class="form-radio"
-                name="accountType"
-                value="other"
-              />
-              <span class="ml-2">Khác</span>
-            </label>
+      class="h-screen flex flex-col justify-center items-center gap-3 text-slate-700">
+      <div class="bg-white p-6 rounded-2xl flex gap-6">
+        <!-- Profile Upload Section -->
+        <div class="grid grid-cols-3 gap-4">
+          <!-- Image slots -->
+          <div
+            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              id="profileImage1"
+              src=""
+              alt="Profile 1"
+              class="hidden w-full h-full object-cover" />
+            <span id="placeholderText1" class="text-gray-500">+</span>
+            <input
+              type="file"
+              id="imageUpload1"
+              class="hidden"
+              accept="image/*" />
+          </div>
+          <div
+            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              id="profileImage2"
+              src=""
+              alt="Profile 2"
+              class="hidden w-full h-full object-cover" />
+            <span id="placeholderText2" class="text-gray-500">+</span>
+            <input
+              type="file"
+              id="imageUpload2"
+              class="hidden"
+              accept="image/*" />
+          </div>
+          <div
+            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              id="profileImage3"
+              src=""
+              alt="Profile 3"
+              class="hidden w-full h-full object-cover" />
+            <span id="placeholderText3" class="text-gray-500">+</span>
+            <input
+              type="file"
+              id="imageUpload3"
+              class="hidden"
+              accept="image/*" />
+          </div>
+          <div
+            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              id="profileImage4"
+              src=""
+              alt="Profile 4"
+              class="hidden w-full h-full object-cover" />
+            <span id="placeholderText4" class="text-gray-500">+</span>
+            <input
+              type="file"
+              id="imageUpload4"
+              class="hidden"
+              accept="image/*" />
+          </div>
+          <div
+            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              id="profileImage5"
+              src=""
+              alt="Profile 5"
+              class="hidden w-full h-full object-cover" />
+            <span id="placeholderText5" class="text-gray-500">+</span>
+            <input
+              type="file"
+              id="imageUpload5"
+              class="hidden"
+              accept="image/*" />
+          </div>
+          <div
+            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
+            <img
+              id="profileImage6"
+              src=""
+              alt="Profile 6"
+              class="hidden w-full h-full object-cover" />
+            <span id="placeholderText6" class="text-gray-500">+</span>
+            <input
+              type="file"
+              id="imageUpload6"
+              class="hidden"
+              accept="image/*" />
           </div>
         </div>
 
-        <div class="relative inline-flex group mt-4 mx-auto">
-          <div
-            class="absolute transitiona-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"
-          ></div>
-          <a
-            href="/meet-the-strangers.html"
-            title="Get quote now"
-            class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-            role="button"
-            >Enter now
-          </a>
+        <!-- Form Section -->
+        <div>
+          <h1 class="text-4xl font-bold">Welcome to the Chat App</h1>
+
+          <label class="block mt-4">
+            <span class="text-gray-700">Name</span>
+            <input
+              class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
+              placeholder="Jane Doe" />
+          </label>
+
+          <div class="mt-4">
+            <span class="text-gray-700">Đối tượng trò chuyện</span>
+            <div class="mt-2">
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="male" />
+                <span class="ml-2">Nam</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="female" />
+                <span class="ml-2">Nữ</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="other" />
+                <span class="ml-2">Khác</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label class="block">
+              <span class="text-gray-700">Độ tuổi</span>
+              <input
+                type="range"
+                min="18"
+                max="100"
+                value="25"
+                class="form-range w-full mt-1"
+                id="ageRange" />
+              <div class="flex justify-between text-xs text-gray-600 mt-2">
+                <span>18</span>
+                <span id="ageValue">25</span>
+                <span>100</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="mt-4">
+            <label class="block">
+              <span class="text-gray-700">Sở thích</span>
+              <select
+                class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
+                id="interests">
+                <option value="sports">Thể thao</option>
+                <option value="music">Âm nhạc</option>
+                <option value="reading">Đọc sách</option>
+                <option value="travel">Du lịch</option>
+                <option value="cooking">Nấu ăn</option>
+              </select>
+            </label>
+            <div class="mt-2">
+              <span class="text-gray-700">Sở thích đã chọn:</span>
+              <div id="selectedInterests" class="flex flex-wrap gap-2 mt-2">
+                <!-- Selected interests will appear here -->
+              </div>
+            </div>
+          </div>
+
+          <div class="relative inline-flex group mt-4 mx-auto">
+            <div
+              class="absolute transitiona-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+            <a
+              href="/meet-the-strangers.html"
+              title="Get quote now"
+              class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              role="button"
+              >Enter now
+            </a>
+          </div>
         </div>
       </div>
     </div>
+
+    <script>
+      const ageRange = document.getElementById('ageRange');
+      const ageValue = document.getElementById('ageValue');
+      const interests = document.getElementById('interests');
+      const selectedInterests = document.getElementById('selectedInterests');
+
+      ageRange.addEventListener('input', function () {
+        ageValue.textContent = ageRange.value;
+      });
+
+      interests.addEventListener('change', function () {
+        const selectedOption = interests.options[interests.selectedIndex];
+        const interestValue = selectedOption.value;
+        const interestText = selectedOption.text;
+
+        if (interestValue) {
+          const interestDiv = document.createElement('div');
+          interestDiv.className = 'bg-gray-200 px-4 py-1 rounded-full';
+          interestDiv.textContent = interestText;
+
+          selectedInterests.appendChild(interestDiv);
+
+          selectedOption.disabled = true;
+          interests.selectedIndex = 0;
+        }
+      });
+
+      const handleImageUpload = (inputId, imgId, placeholderId) => {
+        const input = document.getElementById(inputId);
+        const img = document.getElementById(imgId);
+        const placeholder = document.getElementById(placeholderId);
+
+        input.addEventListener('change', function () {
+          const file = input.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              img.src = e.target.result;
+              img.classList.remove('hidden');
+              placeholder.classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        const div = input.parentElement;
+        div.addEventListener('click', () => {
+          input.click();
+        });
+      };
+
+      for (let i = 1; i <= 6; i++) {
+        handleImageUpload(
+          `imageUpload${i}`,
+          `profileImage${i}`,
+          `placeholderText${i}`,
+        );
+      }
+    </script>
   </body>
 </html>
