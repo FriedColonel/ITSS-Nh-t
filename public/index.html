@@ -9,95 +9,116 @@
   </head>
   <body class="bg-red-400">
     <div
-      class="h-screen flex flex-col justify-center items-center gap-3 text-slate-700">
+      class="h-screen flex flex-col justify-center items-center gap-3 text-slate-700"
+    >
       <div class="bg-white p-6 rounded-2xl flex gap-6">
         <!-- Profile Upload Section -->
-        <div class="grid grid-cols-3 grid-rows-3 gap-3">
-          <!-- Large Image slot -->
-          <div
-            class="col-span-2 row-span-2 w-full h-full bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
-            <img
-              id="profileImageLarge"
-              src=""
-              alt="Large Profile"
-              class="hidden w-full h-full object-cover" />
-            <span id="placeholderTextLarge" class="text-gray-500">+</span>
-            <input
-              type="file"
-              id="imageUploadLarge"
-              class="hidden"
-              accept="image/*" />
-          </div>
-          <!-- Small Image slots -->
-          <div
-            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
-            <img
-              id="profileImage1"
-              src=""
-              alt="Profile 1"
-              class="hidden w-full h-full object-cover" />
-            <span id="placeholderText1" class="text-gray-500">+</span>
-            <input
-              type="file"
-              id="imageUpload1"
-              class="hidden"
-              accept="image/*" />
-          </div>
-          <div
-            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
-            <img
-              id="profileImage2"
-              src=""
-              alt="Profile 2"
-              class="hidden w-full h-full object-cover" />
-            <span id="placeholderText2" class="text-gray-500">+</span>
-            <input
-              type="file"
-              id="imageUpload2"
-              class="hidden"
-              accept="image/*" />
-          </div>
-          <div
-            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
-            <img
-              id="profileImage3"
-              src=""
-              alt="Profile 3"
-              class="hidden w-full h-full object-cover" />
-            <span id="placeholderText3" class="text-gray-500">+</span>
-            <input
-              type="file"
-              id="imageUpload3"
-              class="hidden"
-              accept="image/*" />
-          </div>
-          <div
-            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
-            <img
-              id="profileImage4"
-              src=""
-              alt="Profile 4"
-              class="hidden w-full h-full object-cover" />
-            <span id="placeholderText4" class="text-gray-500">+</span>
-            <input
-              type="file"
-              id="imageUpload4"
-              class="hidden"
-              accept="image/*" />
-          </div>
-          <div
-            class="w-32 h-32 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
-            <img
-              id="profileImage5"
-              src=""
-              alt="Profile 5"
-              class="hidden w-full h-full object-cover" />
-            <span id="placeholderText5" class="text-gray-500">+</span>
-            <input
-              type="file"
-              id="imageUpload5"
-              class="hidden"
-              accept="image/*" />
+        <div class="aspect-square h-full">
+          <div class="grid aspect-square grid-cols-3 grid-rows-3 gap-3">
+            <!-- Large Image slot -->
+            <div
+              class="aspect-square col-span-2 row-span-2 w-full h-full bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative"
+            >
+              <img
+                id="profileImageLarge"
+                src=""
+                alt="Large Profile"
+                class="hidden w-full h-full object-cover"
+              />
+              <span id="placeholderTextLarge" class="text-gray-500">+</span>
+              <input
+                type="file"
+                id="imageUploadLarge"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
+            <!-- Small Image slots -->
+            <div
+              class="w-full bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative"
+            >
+              <img
+                id="profileImage1"
+                src=""
+                alt="Profile 1"
+                class="hidden w-full h-full object-cover"
+              />
+              <span id="placeholderText1" class="text-gray-500">+</span>
+              <input
+                type="file"
+                id="imageUpload1"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
+            <div
+              class="bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative"
+            >
+              <img
+                id="profileImage2"
+                src=""
+                alt="Profile 2"
+                class="hidden w-full h-full object-cover"
+              />
+              <span id="placeholderText2" class="text-gray-500">+</span>
+              <input
+                type="file"
+                id="imageUpload2"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
+            <div
+              class="bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative"
+            >
+              <img
+                id="profileImage3"
+                src=""
+                alt="Profile 3"
+                class="hidden w-full h-full object-cover"
+              />
+              <span id="placeholderText3" class="text-gray-500">+</span>
+              <input
+                type="file"
+                id="imageUpload3"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
+            <div
+              class="bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative"
+            >
+              <img
+                id="profileImage4"
+                src=""
+                alt="Profile 4"
+                class="hidden w-full h-full object-cover"
+              />
+              <span id="placeholderText4" class="text-gray-500">+</span>
+              <input
+                type="file"
+                id="imageUpload4"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
+            <div
+              class="bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative"
+            >
+              <img
+                id="profileImage5"
+                src=""
+                alt="Profile 5"
+                class="hidden w-full h-full object-cover"
+              />
+              <span id="placeholderText5" class="text-gray-500">+</span>
+              <input
+                type="file"
+                id="imageUpload5"
+                class="hidden"
+                accept="image/*"
+              />
+            </div>
           </div>
         </div>
 
@@ -109,7 +130,8 @@
             <span class="text-gray-700">Name</span>
             <input
               class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
-              placeholder="Jane Doe" />
+              placeholder="Jane Doe"
+            />
           </label>
 
           <div class="mt-4">
@@ -120,7 +142,8 @@
                   type="radio"
                   class="form-radio"
                   name="accountType"
-                  value="male" />
+                  value="male"
+                />
                 <span class="ml-2">Nam</span>
               </label>
               <label class="inline-flex items-center ml-6">
@@ -128,7 +151,8 @@
                   type="radio"
                   class="form-radio"
                   name="accountType"
-                  value="female" />
+                  value="female"
+                />
                 <span class="ml-2">Nữ</span>
               </label>
               <label class="inline-flex items-center ml-6">
@@ -136,7 +160,8 @@
                   type="radio"
                   class="form-radio"
                   name="accountType"
-                  value="other" />
+                  value="other"
+                />
                 <span class="ml-2">Khác</span>
               </label>
             </div>
@@ -151,7 +176,8 @@
                 max="100"
                 value="25"
                 class="form-range w-full mt-1"
-                id="ageRange" />
+                id="ageRange"
+              />
               <div class="flex justify-between text-xs text-gray-600 mt-2">
                 <span>18</span>
                 <span id="ageValue">25</span>
@@ -165,7 +191,8 @@
               <span class="text-gray-700">Sở thích</span>
               <select
                 class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
-                id="interests">
+                id="interests"
+              >
                 <option value="sports">Thể thao</option>
                 <option value="music">Âm nhạc</option>
                 <option value="reading">Đọc sách</option>
@@ -183,7 +210,8 @@
 
           <div class="relative inline-flex group mt-4 mx-auto">
             <div
-              class="absolute transitiona-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+              class="absolute transitiona-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"
+            ></div>
             <a
               href="/meet-the-strangers.html"
               title="Get quote now"
@@ -251,7 +279,7 @@
         handleImageUpload(
           `imageUpload${i}`,
           `profileImage${i}`,
-          `placeholderText${i}`,
+          `placeholderText${i}`
         );
       }
     </script>
