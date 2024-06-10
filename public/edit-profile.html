@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-red-400">
+    <div
+      class="h-screen flex flex-col justify-center items-center gap-3 text-slate-700">
+      <div
+        class="bg-white p-6 rounded-2xl flex flex-col gap-6 w-full max-w-2xl">
+        <!-- Edit Profile Form Section -->
+        <div class="w-full">
+          <h1 class="text-4xl font-bold mb-4">Edit Profile</h1>
+
+          <label class="block mt-4">
+            <span class="text-gray-700">Tên</span>
+            <input
+              class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
+              placeholder="Jane Doe"
+              id="name" />
+          </label>
+
+          <div class="mt-4">
+            <span class="text-gray-700">Giới tính</span>
+            <div class="mt-2">
+              <label class="inline-flex items-center">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="male"
+                  id="male" />
+                <span class="ml-2">Nam</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="female"
+                  id="female" />
+                <span class="ml-2">Nữ</span>
+              </label>
+              <label class="inline-flex items-center ml-6">
+                <input
+                  type="radio"
+                  class="form-radio"
+                  name="accountType"
+                  value="other"
+                  id="other" />
+                <span class="ml-2">Khác</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label class="block">
+              <span class="text-gray-700">Độ tuổi</span>
+              <input
+                type="range"
+                min="18"
+                max="100"
+                value="25"
+                class="form-range w-full mt-1"
+                id="ageRange" />
+              <div class="flex justify-between text-xs text-gray-600 mt-2">
+                <span>18</span>
+                <span id="ageValue">25</span>
+                <span>100</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="mt-4">
+            <label class="block">
+              <span class="text-gray-700">Sở thích</span>
+              <select
+                class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
+                id="interests">
+                <option value="sports">Thể thao</option>
+                <option value="music">Âm nhạc</option>
+                <option value="reading">Đọc sách</option>
+                <option value="travel">Du lịch</option>
+                <option value="cooking">Nấu ăn</option>
+              </select>
+            </label>
+            <div class="mt-2">
+              <span class="text-gray-700">Sở thích đã chọn:</span>
+              <div id="selectedInterests" class="flex flex-wrap gap-2 mt-2">
+                <!-- Selected interests will appear here -->
+              </div>
+            </div>
+          </div>
+
+          <div class="relative inline-flex group mt-4 mx-auto">
+            <div
+              class="absolute transition-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+            <button
+              type="button"
+              class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              id="saveButton">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const ageRange = document.getElementById('ageRange');
+      const ageValue = document.getElementById('ageValue');
+      const interests = document.getElementById('interests');
+      const selectedInterests = document.getElementById('selectedInterests');
+
+      ageRange.addEventListener('input', function () {
+        ageValue.textContent = ageRange.value;
+      });
+
+      interests.addEventListener('change', function () {
+        const selectedOption = interests.options[interests.selectedIndex];
+        const interestValue = selectedOption.value;
+        const interestText = selectedOption.text;
+
+        const interestItem = document.createElement('div');
+        interestItem.classList.add(
+          'px-2',
+          'py-1',
+          'bg-gray-300',
+          'rounded-full',
+          'text-sm',
+          'font-medium',
+          'text-gray-700',
+        );
+        interestItem.textContent = interestText;
+
+        const removeButton = document.createElement('button');
+        removeButton.classList.add(
+          'ml-2',
+          'text-red-500',
+          'hover:text-red-700',
+          'focus:outline-none',
+        );
+        removeButton.textContent = '×';
+        removeButton.addEventListener('click', function () {
+          selectedInterests.removeChild(interestItem);
+        });
+
+        interestItem.appendChild(removeButton);
+        selectedInterests.appendChild(interestItem);
+
+        interests.selectedIndex = 0; // Reset the select element
+      });
+
+      // Placeholder event listener for save button
+      document
+        .getElementById('saveButton')
+        .addEventListener('click', function () {
+          alert('Profile saved!');
+        });
+    </script>
+  </body>
+</html>
