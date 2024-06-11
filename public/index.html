@@ -21,10 +21,12 @@
                 class="aspect-square col-span-2 row-span-2 w-full h-full bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden relative">
                 <img
                   id="profileImageLarge"
-                  src=""
+                  src="../img/436427737_981177683417334_457727307150629022_n.jpg"
                   alt="Large Profile"
-                  class="hidden w-full h-full object-cover" />
-                <span id="placeholderTextLarge" class="text-gray-500">+</span>
+                  class="w-full h-full object-cover" />
+                <span id="placeholderTextLarge" class="hidden text-gray-500"
+                  >+</span
+                >
                 <input
                   type="file"
                   id="imageUploadLarge"
@@ -104,15 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="flex justify-center">
-            <a
-              href="/edit-profile.html"
-              title="Edit Profile"
-              class="inline-flex items-center justify-center px-4 py-2 text-lg font-bold text-white transition-all duration-200 bg-blue-500 hover:bg-blue-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              role="button"
-              >Edit Profile</a
-            >
-          </div>
+
           <!-- Text Box Section -->
           <div class="w-full">
             <label class="block">
@@ -123,18 +117,20 @@
                 placeholder="Enter any additional information here..."></textarea>
             </label>
           </div>
+          <div class="flex justify-center">
+            <a
+              href="/edit-profile.html"
+              title="Edit Profile"
+              class="inline-flex items-center justify-center px-4 py-2 text-lg font-bold text-white transition-all duration-200 bg-blue-500 hover:bg-blue-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              role="button"
+              >Edit Profile</a
+            >
+          </div>
         </div>
 
         <!-- Form Section -->
         <div class="w-1/2">
-          <h1 class="text-4xl font-bold">Welcome to the Chat App</h1>
-
-          <label class="block mt-4">
-            <span class="text-gray-700">Name</span>
-            <input
-              class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
-              placeholder="Jane Doe" />
-          </label>
+          <h1 class="text-4xl font-bold">Bạn muốn gặp gỡ ai</h1>
 
           <div class="mt-4">
             <span class="text-gray-700">Đối tượng trò chuyện</span>
@@ -189,7 +185,7 @@
               <span class="text-gray-700">Sở thích</span>
               <select
                 class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
-                id="interests">
+                id="interestSelect">
                 <option value="sports">Thể thao</option>
                 <option value="music">Âm nhạc</option>
                 <option value="reading">Đọc sách</option>
@@ -205,9 +201,77 @@
             </div>
           </div>
 
+          <div class="mt-4">
+            <label class="block">
+              <span class="text-gray-700">Chủ đề quan tâm</span>
+              <select
+                class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
+                id="topicSelect">
+                <option value="âmnhạc">Âm nhạc</option>
+                <option value="phim">Phim</option>
+                <option value="chơigame">Chơi game</option>
+                <option value="đồăn">Đồ ăn</option>
+                <option value="hàihước">Hài hước</option>
+                <option value="chó">Chó</option>
+                <option value="ngoàitrời">Ngoài trời</option>
+                <option value="dulịch">Du lịch</option>
+                <option value="phimhài">Phim hài</option>
+                <option value="nấuăn">Nấu ăn</option>
+                <option value="anime">Anime</option>
+                <option value="meme">Meme</option>
+                <option value="kinhdị">Kinh dị</option>
+                <option value="nghệthuật">Nghệ thuật</option>
+                <option value="mèo">Mèo</option>
+                <option value="côngnghệ">Công nghệ</option>
+                <option value="lịchsử">Lịch sử</option>
+                <option value="sách">Sách</option>
+                <option value="tâmlýhọc">Tâm lý học</option>
+                <option value="độngvật">Động vật</option>
+                <option value="học">Học</option>
+                <option value="vănhoá">Văn hoá</option>
+                <option value="lãngmạn">Lãng mạn</option>
+                <option value="video">Video</option>
+                <option value="rock">Rock</option>
+                <option value="khoahọc">Khoa học</option>
+                <option value="huyềnảo">Huyền ảo</option>
+                <option value="nhiếpảnh">Nhiếp ảnh</option>
+                <option value="ngônngữ">Ngôn ngữ</option>
+                <option value="vẽ">Vẽ</option>
+                <option value="concert">Concert</option>
+                <option value="vũtrụ">Vũ trụ</option>
+                <option value="triếtlý">Triết lý</option>
+                <option value="hiphop">Hip hop</option>
+                <option value="rap">Rap</option>
+                <option value="pop">Pop</option>
+                <option value="hát">Hát</option>
+                <option value="viết">Viết</option>
+                <option value="hoạthình">Hoạt hình</option>
+                <option value="boardgame">Board game</option>
+                <option value="hànhđộng">Hành động</option>
+                <option value="trinhthám">Trinh thám</option>
+                <option value="bảotàng">Bảo tàng</option>
+                <option value="metal">Metal</option>
+                <option value="lờikhuyênchomốiquanhệ">
+                  Lời khuyên cho mối quan hệ
+                </option>
+                <option value="nướngbánh">Nướng bánh</option>
+                <option value="chiêmtinh">Chiêm tinh</option>
+                <option value="thiềnđịnh">Thiền định</option>
+                <option value="tiệních">Tiện ích</option>
+                <option value="vậtlý">Vật lý</option>
+              </select>
+            </label>
+            <div class="mt-2">
+              <span class="text-gray-700">Chủ đề đã chọn:</span>
+              <div id="selectedTopics" class="flex flex-wrap gap-2 mt-2">
+                <!-- Selected topics will appear here -->
+              </div>
+            </div>
+          </div>
+
           <div class="relative inline-flex group mt-4 mx-auto">
             <div
-              class="absolute transitiona-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+              class="absolute transition-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
             <a
               href="/meet-the-strangers.html"
               title="Get quote now"
@@ -223,28 +287,54 @@
     <script>
       const ageRange = document.getElementById('ageRange');
       const ageValue = document.getElementById('ageValue');
-      const interests = document.getElementById('interests');
+      const interestSelect = document.getElementById('interestSelect');
+      const topicSelect = document.getElementById('topicSelect');
       const selectedInterests = document.getElementById('selectedInterests');
+      const selectedTopics = document.getElementById('selectedTopics');
 
       ageRange.addEventListener('input', function () {
         ageValue.textContent = ageRange.value;
       });
 
-      interests.addEventListener('change', function () {
-        const selectedOption = interests.options[interests.selectedIndex];
-        const interestValue = selectedOption.value;
-        const interestText = selectedOption.text;
+      const handleSelection = (selectElement, selectedContainer) => {
+        const selectedOption =
+          selectElement.options[selectElement.selectedIndex];
+        const value = selectedOption.value;
+        const text = selectedOption.text;
 
-        if (interestValue) {
-          const interestDiv = document.createElement('div');
-          interestDiv.className = 'bg-gray-200 px-4 py-1 rounded-full';
-          interestDiv.textContent = interestText;
+        if (value) {
+          const item = document.createElement('div');
+          item.className =
+            'bg-gray-200 px-4 py-1 rounded-full flex items-center';
+          item.textContent = text;
 
-          selectedInterests.appendChild(interestDiv);
+          const removeButton = document.createElement('button');
+          removeButton.classList.add(
+            'ml-2',
+            'text-red-500',
+            'hover:text-red-700',
+            'focus:outline-none',
+          );
+          removeButton.textContent = '×';
+          removeButton.addEventListener('click', function () {
+            selectedContainer.removeChild(item);
+            selectedOption.disabled = false;
+          });
+
+          item.appendChild(removeButton);
+          selectedContainer.appendChild(item);
 
           selectedOption.disabled = true;
-          interests.selectedIndex = 0;
+          selectElement.selectedIndex = 0; // Reset the select element
         }
+      };
+
+      interestSelect.addEventListener('change', function () {
+        handleSelection(interestSelect, selectedInterests);
+      });
+
+      topicSelect.addEventListener('change', function () {
+        handleSelection(topicSelect, selectedTopics);
       });
 
       const handleImageUpload = (inputId, imgId, placeholderId) => {
