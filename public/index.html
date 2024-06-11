@@ -196,26 +196,6 @@
               </div>
             </label>
           </div>
-          <div class="mt-4">
-            <label class="block">
-              <span class="text-gray-700">Sở thích</span>
-              <select
-                class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
-                id="interestSelect">
-                <option value="sports">Thể thao</option>
-                <option value="music">Âm nhạc</option>
-                <option value="reading">Đọc sách</option>
-                <option value="travel">Du lịch</option>
-                <option value="cooking">Nấu ăn</option>
-              </select>
-            </label>
-            <div class="mt-2">
-              <span class="text-gray-700">Sở thích đã chọn:</span>
-              <div id="selectedInterests" class="flex flex-wrap gap-2 mt-2">
-                <!-- Selected interests will appear here -->
-              </div>
-            </div>
-          </div>
 
           <div class="mt-4">
             <label class="block">
@@ -296,6 +276,17 @@
               >Enter now
             </a>
           </div>
+          <div class="relative inline-flex group mt-4 mx-auto">
+            <div
+              class="absolute transition-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+            <a
+              title="Get quote now"
+              class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              role="button"
+              onclick="handleClick()"
+              >Check
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -308,11 +299,17 @@
       const selectedInterests = document.getElementById('selectedInterests');
       const selectedTopics = document.getElementById('selectedTopics');
 
+      const selectedTopicsArray = [];
+
       ageRange.addEventListener('input', function () {
         ageValue.textContent = ageRange.value;
       });
 
-      const handleSelection = (selectElement, selectedContainer) => {
+      const handleSelection = (
+        selectElement,
+        selectedContainer,
+        selectedArray,
+      ) => {
         const selectedOption =
           selectElement.options[selectElement.selectedIndex];
         const value = selectedOption.value;
@@ -335,19 +332,23 @@
           removeButton.addEventListener('click', function () {
             selectedContainer.removeChild(item);
             selectedOption.disabled = false;
+            // Remove the topic from the array
+            const index = selectedArray.indexOf(value);
+            if (index > -1) {
+              selectedArray.splice(index, 1);
+            }
           });
 
           item.appendChild(removeButton);
           selectedContainer.appendChild(item);
 
+          // Add the topic to the array
+          selectedTopicsArray.push(value);
+
           selectedOption.disabled = true;
           selectElement.selectedIndex = 0; // Reset the select element
         }
       };
-
-      interestSelect.addEventListener('change', function () {
-        handleSelection(interestSelect, selectedInterests);
-      });
 
       topicSelect.addEventListener('change', function () {
         handleSelection(topicSelect, selectedTopics);
@@ -383,6 +384,9 @@
           `profileImage${i}`,
           `placeholderText${i}`,
         );
+      }
+      function handleClick() {
+        console.log(selectedTopicsArray);
       }
     </script>
   </body>
