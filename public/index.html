@@ -301,6 +301,13 @@
 
       const selectedTopicsArray = [];
 
+      const saveToLocalStorage = () => {
+        localStorage.setItem(
+          'selectedTopics',
+          JSON.stringify(selectedTopicsArray),
+        );
+      };
+
       ageRange.addEventListener('input', function () {
         ageValue.textContent = ageRange.value;
       });
@@ -332,28 +339,41 @@
           removeButton.addEventListener('click', function () {
             selectedContainer.removeChild(item);
             selectedOption.disabled = false;
-            // Remove the topic from the array
             const index = selectedArray.indexOf(value);
             if (index > -1) {
               selectedArray.splice(index, 1);
             }
+            saveToLocalStorage(); // Save to localStorage on remove
           });
 
           item.appendChild(removeButton);
           selectedContainer.appendChild(item);
-
-          // Add the topic to the array
           selectedTopicsArray.push(value);
-
           selectedOption.disabled = true;
-          selectElement.selectedIndex = 0; // Reset the select element
+          selectElement.selectedIndex = 0;
+
+          saveToLocalStorage(); // Save to localStorage on add
         }
       };
 
       topicSelect.addEventListener('change', function () {
-        handleSelection(topicSelect, selectedTopics);
+        handleSelection(topicSelect, selectedTopics, selectedTopicsArray);
       });
-
+      // Load initial data from localStorage if available
+      window.addEventListener('load', () => {
+        const savedTopics = JSON.parse(localStorage.getItem('selectedTopics'));
+        if (savedTopics) {
+          savedTopics.forEach(topic => {
+            // Simulate the process of re-adding each topic
+            const option = [...topicSelect.options].find(
+              opt => opt.value === topic,
+            );
+            if (option) {
+              handleSelection(topicSelect, selectedTopics, selectedTopicsArray);
+            }
+          });
+        }
+      });
       const handleImageUpload = (inputId, imgId, placeholderId) => {
         const input = document.getElementById(inputId);
         const img = document.getElementById(imgId);
