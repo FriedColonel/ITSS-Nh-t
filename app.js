@@ -9,6 +9,9 @@ const io = require('socket.io')(server);
 
 // compare function that need to pair matched user
 const compare = (arr1, arr2) => {
+  if (arr1.includes('tấtcả') || arr2.includes('tấtcả')) {
+    return true;
+  }
   const result = arr1.reduce((result, item) => result + arr2.includes(item), 0);
   return result;
 };
@@ -22,16 +25,16 @@ app.get('/', (req, res) => {
 let connectedPeers = [];
 let connectedPeersStrangers = [];
 
-io.on('connection', (socket) => {
+io.on('connection', socket => {
   connectedPeers.push({ id: socket.id, selectedTopics: [] });
 
-  socket.on('pre-offer', (data) => {
+  socket.on('pre-offer', data => {
     console.log('pre-offer-came');
     const { calleePersonalCode, callType } = data;
     console.log(calleePersonalCode);
     console.log(connectedPeers);
     const connectedPeer = connectedPeers.find(
-      (peerSocket) => peerSocket.id === calleePersonalCode
+      peerSocket => peerSocket.id === calleePersonalCode,
     );
 
     console.log(connectedPeer);
@@ -50,11 +53,11 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('pre-offer-answer', (data) => {
+  socket.on('pre-offer-answer', data => {
     const { callerSocketId } = data;
 
     const connectedPeer = connectedPeers.find(
-      (peerSocket) => peerSocket.id === callerSocketId
+      peerSocket => peerSocket.id === callerSocketId,
     );
 
     if (connectedPeer) {
@@ -62,11 +65,11 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('webRTC-signaling', (data) => {
+  socket.on('webRTC-signaling', data => {
     const { connectedUserSocketId } = data;
 
     const connectedPeer = connectedPeers.find(
-      (peerSocket) => peerSocket.id === connectedUserSocketId
+      peerSocket => peerSocket.id === connectedUserSocketId,
     );
 
     if (connectedPeer) {
@@ -74,11 +77,11 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('user-hanged-up', (data) => {
+  socket.on('user-hanged-up', data => {
     const { connectedUserSocketId } = data;
 
     const connectedPeer = connectedPeers.find(
-      (peerSocket) => peerSocket.id === connectedUserSocketId
+      peerSocket => peerSocket.id === connectedUserSocketId,
     );
 
     if (connectedPeer) {
@@ -86,7 +89,7 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('stranger-connection-status', (data) => {
+  socket.on('stranger-connection-status', data => {
     const { status } = data;
     const selectedTopics = JSON.parse(data.selectedTopics);
 
@@ -94,7 +97,7 @@ io.on('connection', (socket) => {
       connectedPeersStrangers.push({ id: socket.id, selectedTopics });
     } else {
       const newConnectedPeersStrangers = connectedPeersStrangers.filter(
-        (peerSocket) => peerSocket.id !== socket.id
+        peerSocket => peerSocket.id !== socket.id,
       );
       connectedPeersStrangers = newConnectedPeersStrangers;
     }
@@ -102,17 +105,17 @@ io.on('connection', (socket) => {
     console.log(connectedPeersStrangers);
   });
 
-  socket.on('get-stranger-socket-id', (data) => {
+  socket.on('get-stranger-socket-id', data => {
     let randomStrangerSocketId;
     const filterConnectedPeersStrangers = connectedPeersStrangers.filter(
-      (peerSocket) =>
+      peerSocket =>
         peerSocket.id !== socket.id &&
-        compare(peerSocket.selectedTopics, data.selectedTopics)
+        compare(peerSocket.selectedTopics, data.selectedTopics),
     );
 
     console.log(
       'filterConnectedPeersStrangers: ',
-      filterConnectedPeersStrangers
+      filterConnectedPeersStrangers,
     );
 
     if (filterConnectedPeersStrangers.length > 0) {
@@ -135,14 +138,14 @@ io.on('connection', (socket) => {
     console.log('user disconnected');
 
     const newConnectedPeers = connectedPeers.filter(
-      (peerSocket) => peerSocket.id !== socket.id
+      peerSocket => peerSocket.id !== socket.id,
     );
 
     connectedPeers = newConnectedPeers;
     //console.log(connectedPeers);
 
     const newConnectedPeersStrangers = connectedPeersStrangers.filter(
-      (peerSocket) => peerSocket.id !== socket.id
+      peerSocket => peerSocket.id !== socket.id,
     );
     connectedPeersStrangers = newConnectedPeersStrangers;
   });

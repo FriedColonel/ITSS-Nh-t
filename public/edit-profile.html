@@ -20,7 +20,8 @@
             <input
               class="form-input mt-1 block w-full outline-none py-2 border-2 rounded-xl px-1"
               placeholder="Jane Doe"
-              id="name" />
+              id="name"
+              value="Lê Trường Giang" />
           </label>
 
           <div class="mt-4">
@@ -32,7 +33,8 @@
                   class="form-radio"
                   name="accountType"
                   value="male"
-                  id="male" />
+                  id="male"
+                  checked />
                 <span class="ml-2">Nam</span>
               </label>
               <label class="inline-flex items-center ml-6">
@@ -63,36 +65,15 @@
                 type="range"
                 min="18"
                 max="100"
-                value="25"
+                value="22"
                 class="form-range w-full mt-1"
                 id="ageRange" />
               <div class="flex justify-between text-xs text-gray-600 mt-2">
                 <span>18</span>
-                <span id="ageValue">25</span>
+                <span id="ageValue">22</span>
                 <span>100</span>
               </div>
             </label>
-          </div>
-
-          <div class="mt-4">
-            <label class="block">
-              <span class="text-gray-700">Sở thích</span>
-              <select
-                class="form-multiselect mt-1 block w-full border-2 rounded-xl py-2 px-1"
-                id="interests">
-                <option value="sports">Thể thao</option>
-                <option value="music">Âm nhạc</option>
-                <option value="reading">Đọc sách</option>
-                <option value="travel">Du lịch</option>
-                <option value="cooking">Nấu ăn</option>
-              </select>
-            </label>
-            <div class="mt-2">
-              <span class="text-gray-700">Sở thích đã chọn:</span>
-              <div id="selectedInterests" class="flex flex-wrap gap-2 mt-2">
-                <!-- Selected interests will appear here -->
-              </div>
-            </div>
           </div>
 
           <div class="relative inline-flex group mt-4 mx-auto">
@@ -104,6 +85,18 @@
               id="saveButton">
               Save Changes
             </button>
+          </div>
+
+          <div class="relative inline-flex group mt-4 mx-auto">
+            <div
+              class="absolute transition-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+            <a
+              href="/index.html"
+              title="Get quote now"
+              class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              role="button"
+              >Quay lại
+            </a>
           </div>
         </div>
       </div>
