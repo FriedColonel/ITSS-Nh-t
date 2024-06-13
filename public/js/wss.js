@@ -69,6 +69,6 @@ export const changeStrangerConnectionStatus = (data) => {
   socketIO.emit('stranger-connection-status', data);
 };
 
-export const getStrangerSocketId = () => {
-  socketIO.emit('get-stranger-socket-id');
+export const getStrangerSocketId = (selectedTopics = []) => {
+  socketIO.emit('get-stranger-socket-id', { selectedTopics });
 };

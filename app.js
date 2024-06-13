@@ -1,31 +1,37 @@
-const express = require("express");
-const http = require("http");
+const express = require('express');
+const http = require('http');
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 const server = http.createServer(app);
-const io = require("socket.io")(server);
+const io = require('socket.io')(server);
 
-app.use(express.static("public"));
+// compare function that need to pair matched user
+const compare = (arr1, arr2) => {
+  const result = arr1.reduce((result, item) => result + arr2.includes(item), 0);
+  return result;
+};
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 let connectedPeers = [];
 let connectedPeersStrangers = [];
 
-io.on("connection", (socket) => {
-  connectedPeers.push(socket.id);
+io.on('connection', (socket) => {
+  connectedPeers.push({ id: socket.id, selectedTopics: [] });
 
-  socket.on("pre-offer", (data) => {
-    console.log("pre-offer-came");
+  socket.on('pre-offer', (data) => {
+    console.log('pre-offer-came');
     const { calleePersonalCode, callType } = data;
     console.log(calleePersonalCode);
     console.log(connectedPeers);
     const connectedPeer = connectedPeers.find(
-      (peerSocketId) => peerSocketId === calleePersonalCode
+      (peerSocket) => peerSocket.id === calleePersonalCode
     );
 
     console.log(connectedPeer);
@@ -35,99 +41,108 @@ io.on("connection", (socket) => {
         callerSocketId: socket.id,
         callType,
       };
-      io.to(calleePersonalCode).emit("pre-offer", data);
+      io.to(calleePersonalCode).emit('pre-offer', data);
     } else {
       const data = {
-        preOfferAnswer: "CALLEE_NOT_FOUND",
+        preOfferAnswer: 'CALLEE_NOT_FOUND',
       };
-      io.to(socket.id).emit("pre-offer-answer", data);
+      io.to(socket.id).emit('pre-offer-answer', data);
     }
   });
 
-  socket.on("pre-offer-answer", (data) => {
+  socket.on('pre-offer-answer', (data) => {
     const { callerSocketId } = data;
 
     const connectedPeer = connectedPeers.find(
-      (peerSocketId) => peerSocketId === callerSocketId
+      (peerSocket) => peerSocket.id === callerSocketId
     );
 
     if (connectedPeer) {
-      io.to(data.callerSocketId).emit("pre-offer-answer", data);
+      io.to(data.callerSocketId).emit('pre-offer-answer', data);
     }
   });
 
-  socket.on("webRTC-signaling", (data) => {
+  socket.on('webRTC-signaling', (data) => {
     const { connectedUserSocketId } = data;
 
     const connectedPeer = connectedPeers.find(
-      (peerSocketId) => peerSocketId === connectedUserSocketId
+      (peerSocket) => peerSocket.id === connectedUserSocketId
     );
 
     if (connectedPeer) {
-      io.to(connectedUserSocketId).emit("webRTC-signaling", data);
+      io.to(connectedUserSocketId).emit('webRTC-signaling', data);
     }
   });
 
-  socket.on("user-hanged-up", (data) => {
+  socket.on('user-hanged-up', (data) => {
     const { connectedUserSocketId } = data;
 
     const connectedPeer = connectedPeers.find(
-      (peerSocketId) => peerSocketId === connectedUserSocketId
+      (peerSocket) => peerSocket.id === connectedUserSocketId
     );
 
     if (connectedPeer) {
-      io.to(connectedUserSocketId).emit("user-hanged-up");
+      io.to(connectedUserSocketId).emit('user-hanged-up');
     }
   });
 
-  socket.on("stranger-connection-status", (data) => {
+  socket.on('stranger-connection-status', (data) => {
     const { status } = data;
+    const selectedTopics = JSON.parse(data.selectedTopics);
+
     if (status) {
-      connectedPeersStrangers.push(socket.id);
+      connectedPeersStrangers.push({ id: socket.id, selectedTopics });
     } else {
       const newConnectedPeersStrangers = connectedPeersStrangers.filter(
-        (peerSocketId) => peerSocketId !== socket.id
+        (peerSocket) => peerSocket.id !== socket.id
       );
       connectedPeersStrangers = newConnectedPeersStrangers;
     }
 
-    console.log(connectedPeersStrangers)
+    console.log(connectedPeersStrangers);
   });
 
-  socket.on("get-stranger-socket-id", () => {
+  socket.on('get-stranger-socket-id', (data) => {
     let randomStrangerSocketId;
     const filterConnectedPeersStrangers = connectedPeersStrangers.filter(
-      (peerSocketId) => peerSocketId !== socket.id
+      (peerSocket) =>
+        peerSocket.id !== socket.id &&
+        compare(peerSocket.selectedTopics, data.selectedTopics)
+    );
+
+    console.log(
+      'filterConnectedPeersStrangers: ',
+      filterConnectedPeersStrangers
     );
 
     if (filterConnectedPeersStrangers.length > 0) {
-      randomStrangerSocketId = 
+      randomStrangerSocketId =
         filterConnectedPeersStrangers[
           Math.floor(Math.random() * filterConnectedPeersStrangers.length)
-      ];
+        ].id;
     } else {
       randomStrangerSocketId = null;
     }
-    
-    const data = {
-      randomStrangerSocketId
+
+    data = {
+      randomStrangerSocketId,
     };
 
-    io.to(socket.id).emit("stranger-socket-id", data);
+    io.to(socket.id).emit('stranger-socket-id', data);
   });
 
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
 
     const newConnectedPeers = connectedPeers.filter(
-      (peerSocketId) => peerSocketId !== socket.id
+      (peerSocket) => peerSocket.id !== socket.id
     );
 
     connectedPeers = newConnectedPeers;
     //console.log(connectedPeers);
 
     const newConnectedPeersStrangers = connectedPeersStrangers.filter(
-      (peerSocketId) => peerSocketId !== socket.id
+      (peerSocket) => peerSocket.id !== socket.id
     );
     connectedPeersStrangers = newConnectedPeersStrangers;
   });

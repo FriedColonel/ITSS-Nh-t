@@ -5,13 +5,15 @@ import * as ui from './ui.js';
 let strangerCallType;
 
 export const changeStrangerConnectionStatus = (status) => {
-  const data = { status };
+  const selectedTopics = localStorage.getItem('selectedTopics') || [];
+  const data = { status, selectedTopics };
   wss.changeStrangerConnectionStatus(data);
 };
 
 export const getStrangerSocketIdAndConnect = (callType) => {
   strangerCallType = callType;
-  wss.getStrangerSocketId();
+  const selectedTopics = localStorage.getItem('selectedTopics') || [];
+  wss.getStrangerSocketId(selectedTopics);
 };
 
 export const connectWithStranger = (data) => {
