@@ -259,14 +259,17 @@ export const handleWebRTCAnswer = async (data) => {
 
 export const handleWebRTCCandidate = async (data) => {
   console.log('handling incoming webRTC candidates');
-  try {
-    await peerConection.addIceCandidate(data.candidate);
-  } catch (err) {
-    console.error(
-      'error occured when trying to add received ice candidate',
-      err
-    );
-  }
+  peerConection
+    .addIceCandidate(new RTCIceCandidate(data.candidate))
+    .then(() => {
+      console.log('successfully added ice candidate');
+    })
+    .catch((err) => {
+      console.error(
+        'error occured when trying to add received ice candidate',
+        err
+      );
+    });
 };
 
 let screenSharingStream;
