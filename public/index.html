@@ -269,8 +269,6 @@
       document.addEventListener('DOMContentLoaded', function () {
         const ageRange = document.getElementById('ageRange');
         const ageValue = document.getElementById('ageValue');
-        const distanceRange = document.getElementById('distanceRange');
-        const distanceValue = document.getElementById('distanceValue');
         const topicSelect = document.getElementById('topicSelect');
         const selectedTopics = document.getElementById('selectedTopics');
 
@@ -285,10 +283,6 @@
 
         ageRange.addEventListener('input', function () {
           ageValue.textContent = ageRange.value;
-        });
-
-        distanceRange.addEventListener('input', function () {
-          distanceValue.textContent = distanceRange.value;
         });
 
         function addTopic(topic) {
