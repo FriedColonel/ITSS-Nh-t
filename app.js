@@ -9,7 +9,7 @@ const io = require('socket.io')(server);
 
 // compare function that need to pair matched user
 const compare = (arr1, arr2) => {
-  if (arr1.includes('tấtcả') || arr2.includes('tấtcả')) {
+  if (arr1.includes('tất cả') || arr2.includes('tất cả')) {
     return true;
   }
   const result = arr1.reduce((result, item) => result + arr2.includes(item), 0);
