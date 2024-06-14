@@ -286,7 +286,9 @@
         });
 
         function addTopic(topic) {
-          if (!topic) return;
+          if (!topic || selectedTopicsArray.includes(topic)) return;
+
+          selectedTopicsArray.push(topic);
 
           const topicSpan = document.createElement('span');
           topicSpan.className =
@@ -298,11 +300,13 @@
           removeButton.textContent = 'x';
           removeButton.addEventListener('click', function () {
             selectedTopics.removeChild(topicSpan);
+            selectedTopicsArray.splice(selectedTopicsArray.indexOf(topic), 1);
             saveTopicsToLocalStorage();
           });
 
           topicSpan.appendChild(removeButton);
           selectedTopics.appendChild(topicSpan);
+          saveTopicsToLocalStorage();
         }
 
         function saveTopicsToLocalStorage() {
